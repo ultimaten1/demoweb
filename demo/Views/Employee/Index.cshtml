@@ -1,0 +1,46 @@
+﻿@model IEnumerable<demo.Models.EmpClass>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+    <h2>Search Employee Details</h2>
+
+    <p>
+        @using (Html.BeginForm("Index", "Employee", FormMethod.Get)) 
+        { 
+        <input type="text" name="empSearch" placeholder="Nhập tên tìm kiếm" />
+        <input type="submit" value="Search" name="Submit" />
+        }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+            </tr>
+        }
+    </table>
+</center>
